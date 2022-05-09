@@ -4,6 +4,7 @@ import type { SyncOptions } from 'execa'
 import { execaCommandSync } from 'execa'
 import type { TiConfig, TiTask } from '../config'
 import { getConfig } from '../config'
+import { parseCommand } from '../parse'
 
 const config: TiConfig = getConfig()
 if (config === null || config === undefined)
@@ -23,7 +24,7 @@ prompts({
   name: 'task',
   message: 'Select a task',
   choices: config.tasks.map(task => ({ title: task.name, value: task })),
-}).then((answer: Answers<'task'>) => {
+}).then(async (answer: Answers<'task'>) => {
   const task = getTask(answer.task.name)
   try {
     for (const cmd of task.cmds) {
@@ -31,7 +32,8 @@ prompts({
       if (cmd.type === 'shell')
         options = { ...options, shell: true }
 
-      execaCommandSync(cmd.value, options)
+      const command = await parseCommand(cmd)
+      execaCommandSync(command, options)
     }
   }
   catch (e) {

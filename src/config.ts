@@ -10,9 +10,19 @@ export interface TiConfig {
   tasks: TiTask[]
 }
 
+export type TiCmdParams<K extends string, T> = {
+  [P in K]: T
+}
+
+export interface TiCmdParam {
+  type: 'select' | 'text'
+  choices: string[] | []
+}
+
 export interface TiCmd {
   type: 'exec' | 'shell'
   value: string
+  params?: TiCmdParams<string, TiCmdParam>
 }
 
 export interface TiTask {

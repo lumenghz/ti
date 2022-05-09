@@ -2,8 +2,42 @@
 version: '1'
 
 tasks:
-  - name: git-branch-clear
+  - name: git list remote branch
     cmds:
       - git fetch -p
       - type: shell
-        value: "for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done"
+        value: git branch -a | awk '{print $1}'
+
+  - name: sample of text (shorthand)
+    cmds:
+      # param will be type: 'text' if you not declare it
+      - echo hello $(?name)
+  - name: sample of text
+    cmds:
+      - value: echo hello $(?name)
+        params:
+          name:
+            type: text
+
+  - name: sample of select
+    cmds:
+      - value: echo eat $(?fruit)
+        params:
+          fruit:
+            type: select
+            choices:
+              - Avocado
+              - Breadfruit
+              - Kiwi Berry
+
+  - name: sample of mixed
+    cmds:
+      - hello $(?yourname)
+      - value: echo eat $(?fruit)
+        params:
+          fruit:
+            type: select
+            choices:
+              - Avocado
+              - Breadfruit
+              - Kiwi Berry
