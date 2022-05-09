@@ -18,6 +18,7 @@
   },
   "scripts": {
     "build": "unbuild",
+    "lint": "eslint src",
     "dev": "esno src/bin/ti.ts"
   },
   "devDependencies": {
