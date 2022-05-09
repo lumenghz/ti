@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "type": "object",
+  "properties": {
+    "version": {
+      "description": "Configuration version. The configuration files might have different structure in the future.",
+      "type": "string",
+      "default": "1"
+    },
+    "tasks": {
+      "description": "All your tasks.",
+      "type": "array",
+      "items": {
+				"$ref": "#/$defs/task"
+			}
+    }
+  },
+	"required": ["tasks"],
+  "$defs": {
+		"task": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"description": "Task name."
+				},
+				"cwd": {
+					"description": "Working directory of command."
+				},
+				"cmds": {
+					"description": "Commands to execute.",
+					"type": "array",
+					"items": {
+						"oneOf": [
+							{"type": "string"},
+							{"$ref": "#/$defs/task/$defs/cmd"}
+						]
+					}
+				}
+			},
+			"required": ["name"],
+			"$defs": {
+				"cmd": {
+					"type": "object",
+					"properties": {
+						"type": {
+							"description": "Command type. We will run the command with the specified type.",
+							"oneOf": [{"type": "string", "enum": ["exec", "shell"]}]
+						},
+						"value": {
+							"description": "Command to be executed.",
+							"type": "string"
+						}
+					}
+				}
+			}
+		}
+  }
+}

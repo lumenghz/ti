@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=schema/ti-config-schema-v1.json
+version: '1'
+
+tasks:
+  - name: git-branch-clear
+    cmds:
+      - git fetch -p
+      - type: shell
+        value: "for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done"
