@@ -1,13 +1,13 @@
-import { exit } from 'process'
 import type { Answers } from 'prompts'
 import prompts from 'prompts'
+import type { SyncOptions } from 'execa'
 import { execaCommandSync } from 'execa'
 import type { TiConfig, TiTask } from '../config'
 import { getConfig } from '../config'
 
 const config: TiConfig = getConfig()
 if (config === null || config === undefined)
-  exit(1)
+  process.exit(1)
 
 function getTask(name: string): TiTask {
   for (const task of config.tasks) {
@@ -15,7 +15,7 @@ function getTask(name: string): TiTask {
       return task
   }
   // it should never reach here
-  exit(1)
+  process.exit(1)
 }
 
 prompts({
@@ -26,7 +26,13 @@ prompts({
 }).then((answer: Answers<'task'>) => {
   const task = getTask(answer.task.name)
   try {
-    execaCommandSync(task.cmds.join(' && '), { shell: true, stdio: 'inherit', cwd: task.cwd })
+    for (const cmd of task.cmds) {
+      let options: SyncOptions = { encoding: 'utf8', stdio: 'inherit', cwd: task.cwd }
+      if (cmd.type === 'shell')
+        options = { ...options, shell: true }
+
+      execaCommandSync(cmd.value, options)
+    }
   }
   catch (e) {
     console.error(e)
