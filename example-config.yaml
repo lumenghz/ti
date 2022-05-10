@@ -32,7 +32,7 @@ tasks:
 
   - name: sample of mixed
     cmds:
-      - hello $(?yourname)
+      - echo hello $(?yourname)
       - value: echo eat $(?fruit)
         params:
           fruit:
