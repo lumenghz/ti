@@ -27,7 +27,7 @@
   },
   "scripts": {
     "prepublishOnly": "npm run build",
-    "dev": "esno src/bin/ti.ts init",
+    "dev": "esno src/bin/ti.ts",
     "build": "unbuild",
     "lint": "eslint src",
     "test": "vitest",
