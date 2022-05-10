@@ -1,6 +1,6 @@
-import { readFileSync } from 'fs'
-import { join } from 'path'
-import { parse as parseYaml } from 'yaml'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs'
+import { dirname, join } from 'path'
+import { parse as parseYaml, stringify as stringifyYaml } from 'yaml'
 import { sync as syncGlob } from 'fast-glob'
 
 const userHome = process.platform === 'win32' ? process.env.USERPROFILE : process.env.HOME
@@ -32,12 +32,17 @@ export interface TiTask {
   cwd?: string
 }
 
-export function getConfig(): TiConfig {
+function getConfigFilepath(): string {
   const candidates = syncGlob(join(tiConfigHome, 'config.y?(a)ml'), { absolute: true })
   if (candidates.length === 0)
     throw new Error(`Config file not found in ${tiConfigHome}`)
 
-  const yamlPath = candidates[0] // take the first one
+  // take the first one
+  return candidates[0]
+}
+
+export function getConfig(): TiConfig {
+  const yamlPath = getConfigFilepath()
   const config = parseYaml(readFileSync(yamlPath, 'utf8'))
   const tasks = config.tasks.map((task: any) => {
     const cmds = task.cmds.map((cmd: any) => {
@@ -54,4 +59,32 @@ export function getConfig(): TiConfig {
   }) as TiTask[]
   config.tasks = tasks
   return config
+}
+
+/**
+ * Create a simple ti configuration file.
+ */
+export function initDefaultConfig(): void {
+  const configFilepath = join(tiConfigHome, 'config.yaml')
+  if (existsSync(configFilepath)) {
+    console.warn(`Configuration file ${configFilepath} already exists.`)
+    return
+  }
+
+  const content = stringifyYaml(
+    {
+      version: '1',
+      tasks: [
+        {
+          name: 'hello world',
+          cmds: [
+            'echo hello world',
+          ],
+        },
+      ],
+    },
+    { singleQuote: true },
+  )
+  mkdirSync(dirname(configFilepath), { recursive: true })
+  writeFileSync(configFilepath, content, { encoding: 'utf8' })
 }

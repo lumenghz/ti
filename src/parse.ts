@@ -14,7 +14,7 @@ export async function parseCommand(cmd: TiCmd): Promise<string> {
     const params = cmd.params || {}
 
     const questions = parsePromptQuestions(matches.map(match => match[1]), params)
-    const answer = await prompts(questions)
+    const answer = await prompts(questions, { onCancel: () => process.exit() })
 
     for (const match of matches) {
       const name = match[1]

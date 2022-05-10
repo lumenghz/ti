@@ -14,6 +14,34 @@ Just task it...
 npm install -g @dennislu/ti
 ```
 
+## Commands
+
+### init
+
+Generate a simple task config to your system ti `config.yml`. It will be in:
+
+<details>
+<summary>Darwin, Linux</summary>
+
+`~/.config/ti/config.yaml`
+
+</details>
+
+<details>
+<summary>Windows</summary>
+
+`C:\Users\[username]\.config\ti\config.yaml`
+
+</details>
+
+### -h, --help
+
+Show help messages.
+
+### --version
+
+Show `ti` version.
+
 ## Configuration
 
 A [json-schema definition](./schema/ti-config-schema-v1.json) is provided, you can use it for tips in your editor.
