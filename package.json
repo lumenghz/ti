@@ -22,6 +22,7 @@
     "ti": "bin/ti.mjs"
   },
   "scripts": {
+    "prepublishOnly": "npm run build",
     "dev": "esno src/bin/ti.ts",
     "build": "unbuild",
     "lint": "eslint src",
