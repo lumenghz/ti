@@ -1,9 +1,10 @@
-import { existsSync, readFileSync } from 'fs'
+import { readFileSync } from 'fs'
 import { join } from 'path'
 import { parse as parseYaml } from 'yaml'
+import { sync as syncGlob } from 'fast-glob'
 
-const configHome = process.platform === 'win32' ? process.env.USERPROFILE : process.env.HOME
-const yamlPath = join(configHome || '~/', '.config', 'ti', 'config.yaml')
+const userHome = process.platform === 'win32' ? process.env.USERPROFILE : process.env.HOME
+const tiConfigHome = join(userHome || '~/', '.config', 'ti')
 
 export interface TiConfig {
   version: string | '1'
@@ -32,9 +33,11 @@ export interface TiTask {
 }
 
 export function getConfig(): TiConfig {
-  if (!existsSync(yamlPath))
-    throw new Error(`Config file not found: ${yamlPath}`)
+  const candidates = syncGlob(join(tiConfigHome, 'config.y?(a)ml'), { absolute: true })
+  if (candidates.length === 0)
+    throw new Error(`Config file not found in ${tiConfigHome}`)
 
+  const yamlPath = candidates[0] // take the first one
   const config = parseYaml(readFileSync(yamlPath, 'utf8'))
   const tasks = config.tasks.map((task: any) => {
     const cmds = task.cmds.map((cmd: any) => {

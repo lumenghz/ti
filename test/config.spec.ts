@@ -4,5 +4,5 @@ import { getConfig } from '../src/config'
 test('No configuration files test', () => {
   expect(() => {
     getConfig()
-  }).toThrow(/^Config file not found:.*?$/)
+  }).toThrow(/^Config file not found in .*?$/)
 })
