@@ -4,6 +4,10 @@
   "packageManager": "pnpm@7.0.0",
   "description": "Just run your task easily",
   "author": "Dennis Lu <jiahehz@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lumenghz/ti.git"
+  },
   "license": "MIT",
   "main": "dist/index.cjs",
   "types": "dist/index.d.ts",

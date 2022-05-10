@@ -1,4 +1,5 @@
 # yaml-language-server: $schema=schema/ti-config-schema-v1.json
+# optional, default '1'
 version: '1'
 
 tasks:
@@ -10,7 +11,7 @@ tasks:
 
   - name: sample of text (shorthand)
     cmds:
-      # param will be type: 'text' if you not declare it
+      # param will be type: 'text' if you not declare it in params
       - echo hello $(?name)
   - name: sample of text
     cmds:
