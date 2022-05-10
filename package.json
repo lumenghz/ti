@@ -25,7 +25,8 @@
     "dev": "esno src/bin/ti.ts",
     "build": "unbuild",
     "lint": "eslint src",
-    "test": "vitest"
+    "test": "vitest",
+    "release": "standard-version"
   },
   "devDependencies": {
     "@antfu/eslint-config-ts": "^0.23.0",
@@ -36,6 +37,7 @@
     "execa": "^6.1.0",
     "fast-glob": "^3.2.11",
     "prompts": "^2.4.2",
+    "standard-version": "^9.3.2",
     "typescript": "^4.6.4",
     "unbuild": "^0.7.4",
     "vitest": "^0.10.5",
