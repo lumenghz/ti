@@ -34,10 +34,10 @@
     "release": "standard-version"
   },
   "devDependencies": {
-    "@antfu/eslint-config-ts": "^0.25.1",
+    "@antfu/eslint-config-ts": "^0.26.3",
     "@types/node": "^17.0.40",
     "@types/prompts": "^2.0.14",
-    "eslint": "^8.15.0",
+    "eslint": "^8.23.0",
     "esno": "^0.16.0",
     "execa": "^6.1.0",
     "fast-glob": "^3.2.11",
