@@ -37,7 +37,8 @@ export function runTi(config: TiConfig): void {
       }
     }
     catch (e) {
-      console.error(e)
+      if (config.debug === true)
+        console.error(e)
     }
   })
 }

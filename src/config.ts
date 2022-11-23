@@ -8,6 +8,7 @@ const tiConfigHome = join(userHome || '~/', '.config', 'ti')
 
 export interface TiConfig {
   version: string | '1'
+  debug?: boolean
   tasks: TiTask[]
 }
 
