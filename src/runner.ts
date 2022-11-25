@@ -31,6 +31,8 @@ export function runTi(config: TiConfig): void {
         let options: SyncOptions = { encoding: 'utf8', stdio: 'inherit', cwd: task.cwd }
         if (cmd.type === 'shell')
           options = { ...options, shell: true }
+        if (task.variables)
+          options = { ...options, env: { ...process.env, ...task.variables } }
 
         const command = await parseCommand(cmd)
         execaCommandSync(command, options)

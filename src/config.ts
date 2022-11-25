@@ -31,6 +31,7 @@ export interface TiTask {
   name: string
   cmds: TiCmd[]
   cwd?: string
+  variables?: Record<string, string>
 }
 
 export function getConfig(): TiConfig {
