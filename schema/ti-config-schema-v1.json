@@ -35,6 +35,10 @@
 							{"$ref": "#/$defs/task/$defs/cmd"}
 						]
 					}
+				},
+				"variables": {
+					"description": "Environment variables",
+					"type": "object"
 				}
 			},
 			"required": ["name"],
