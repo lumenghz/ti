@@ -36,7 +36,7 @@
 						]
 					}
 				},
-				"variables": {
+				"env": {
 					"description": "Environment variables",
 					"type": "object"
 				}
