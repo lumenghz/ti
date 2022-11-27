@@ -1,6 +1,7 @@
 import { type SyncOptions, execaCommandSync } from 'execa'
 import prompts, { type Answers } from 'prompts'
 import { Fzf } from 'fzf'
+import consola from 'consola'
 import { parseCommand } from './parse'
 import type { TiConfig, TiTask } from './config'
 
@@ -11,6 +12,11 @@ function getTask(config: TiConfig, name: string): TiTask {
   }
   // it should never reach here
   process.exit(1)
+}
+
+export function listTi(config: TiConfig): void {
+  consola.success('Ti founded tasks:\n\n')
+  config.tasks.forEach(task => consola.info(`[task] ${task.name}`))
 }
 
 export function runTi(config: TiConfig): void {

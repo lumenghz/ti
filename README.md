@@ -14,9 +14,35 @@ Just task it...
 npm install -g @dennislu/ti
 ```
 
+## Commands
+
+### list
+
+List all task names in your configuration file.
+
+```shell
+ti list
+```
+
+![ti-list](./screenshots/ti-list.jpg)
+
+### -h, --help
+
+```shell
+ti -h
+```
+
+![ti-help](./screenshots/ti-help.jpg)
+
 ## Configuration
 
 A [json-schema definition](./schema/ti-config-schema-v1.json) is provided, you can use it for tips in your editor.
+
+### Steps
+
+- Create a configuration file at user's config folder
+  - Windows: 
+  - Linux/MacOS: `$HOME/.config/ti/config.yml`
 
 ### Example
 

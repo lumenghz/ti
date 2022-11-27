@@ -1,9 +1,26 @@
+import yargs from 'yargs/yargs'
+import { hideBin } from 'yargs/helpers'
 import type { TiConfig } from '../config'
 import { getConfig } from '../config'
-import { runTi } from '../runner'
+import { listTi, runTi } from '../runner'
 
-const config: TiConfig = getConfig()
+const options = yargs(hideBin(process.argv))
+  .command('list', 'Show configured task list', { list: { default: true } })
+  .help('h')
+  .alias('h', 'help')
+  .version()
+  .alias('v', 'version')
+  .showHelpOnFail(true)
+  .strictCommands(true)
+  .strictOptions(true)
+  .locale('en')
+  .parseSync()
+
+const config = getConfig()
 if (config === null || config === undefined)
   process.exit(1)
 
-runTi(config)
+if (options.list)
+  listTi(config)
+else
+  runTi(config)
