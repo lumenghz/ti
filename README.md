@@ -26,6 +26,8 @@ version: '1'
 
 tasks:
   - name: git list remote branch
+    env:
+      GH_TOKEN: blablabla
     cmds:
       - git fetch -p
       - type: shell
