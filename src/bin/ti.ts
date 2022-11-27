@@ -1,6 +1,5 @@
 import yargs from 'yargs/yargs'
 import { hideBin } from 'yargs/helpers'
-import type { TiConfig } from '../config'
 import { getConfig } from '../config'
 import { listTi, runTi } from '../runner'
 
