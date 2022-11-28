@@ -1,4 +1,4 @@
-import yargs from 'yargs/yargs'
+import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import { getConfig } from '../config'
 import { listTi, runTi } from '../runner'
