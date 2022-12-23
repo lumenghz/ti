@@ -4,6 +4,7 @@ import { getConfig } from '../config'
 import { listTi, runTi } from '../runner'
 
 const options = yargs(hideBin(process.argv))
+  .scriptName('ti')
   .command('list', 'Show configured task list', { list: { default: true } })
   .help('h')
   .alias('h', 'help')
