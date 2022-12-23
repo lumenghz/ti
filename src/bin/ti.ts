@@ -14,6 +14,7 @@ const options = yargs(hideBin(process.argv))
   .strictCommands(true)
   .strictOptions(true)
   .locale('en')
+  .showHelpOnFail(true)
   .parseSync()
 
 const config = getConfig()
