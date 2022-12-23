@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs'
 import { join } from 'path'
 import { parse as parseYaml } from 'yaml'
-import { sync as syncGlob } from 'fast-glob'
+import { globbySync } from 'globby'
 
 const userHome = process.platform === 'win32' ? process.env.USERPROFILE : process.env.HOME
 const tiConfigHome = join(userHome || '~/', '.config', 'ti')
@@ -35,7 +35,7 @@ export interface TiTask {
 }
 
 export function getConfig(): TiConfig {
-  const candidates = syncGlob(join(tiConfigHome, 'config.y?(a)ml'), { absolute: true })
+  const candidates = globbySync(join(tiConfigHome, 'config.y?(a)ml'), { absolute: true })
   if (candidates.length === 0)
     throw new Error(`Config file not found in ${tiConfigHome}`)
 
