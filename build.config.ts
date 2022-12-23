@@ -1,12 +1,15 @@
 import { defineBuildConfig } from 'unbuild'
-import { sync } from 'fast-glob'
+import { globbySync } from 'globby'
 
 export default defineBuildConfig({
   entries: [
-    ...sync('src/bin/*.ts').map(e => e.slice(0, -3)),
+    ...globbySync('src/bin/*.ts').map(e => e.slice(0, -3)),
   ],
   clean: true,
   declaration: true,
+  replace: {
+    'import.meta.vitest': 'undefined',
+  },
   rollup: {
     emitCJS: true,
     inlineDependencies: true,

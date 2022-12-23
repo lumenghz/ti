@@ -1,0 +1,10 @@
+version: '1'
+tasks:
+  - name: simple echo
+    cmds:
+      - echo hello
+
+  - name: simple shell
+    cmds:
+      - type: shell
+        value: echo $PATH

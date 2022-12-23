@@ -30,7 +30,7 @@
     "dev": "esno src/bin/ti.ts",
     "build": "unbuild",
     "lint": "eslint src",
-    "test": "vitest",
+    "test": "vitest run",
     "release": "standard-version"
   },
   "devDependencies": {
