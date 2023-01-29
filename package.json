@@ -34,7 +34,7 @@
     "release": "standard-version"
   },
   "devDependencies": {
-    "@antfu/eslint-config-ts": "^0.34.0",
+    "@antfu/eslint-config-ts": "^0.35.0",
     "@types/node": "^18.0.0",
     "@types/prompts": "^2.4.2",
     "@types/yargs": "^17.0.17",
