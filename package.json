@@ -1,7 +1,7 @@
 {
   "name": "@dennislu/ti",
   "version": "0.4.1",
-  "packageManager": "pnpm@7.29.0",
+  "packageManager": "pnpm@7.29.1",
   "description": "Just run your task easily",
   "author": "Dennis Lu <jiahehz@gmail.com>",
   "repository": {
