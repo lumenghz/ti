@@ -5,7 +5,7 @@ specifiers:
   '@types/node': ^18.0.0
   '@types/prompts': ^2.4.2
   '@types/yargs': ^17.0.17
-  consola: ^2.15.3
+  consola: ^3.0.0
   eslint: ^8.30.0
   esno: ^0.16.0
   execa: ^6.1.0
@@ -24,7 +24,7 @@ devDependencies:
   '@types/node': 18.11.17
   '@types/prompts': 2.4.2
   '@types/yargs': 17.0.17
-  consola: 2.15.3
+  consola: 3.0.0
   eslint: 8.30.0
   esno: 0.16.3
   execa: 6.1.0
@@ -1373,6 +1373,10 @@ packages:
 
   /consola/2.15.3:
     resolution: {integrity: sha512-9vAdYbHj6x2fLKC4+oPH0kFzY/orMZyG2Aj+kNylHxKGJ/Ed4dpNyAQYwJOdqO4zdM7XpVHmyejQDcQHrnuXbw==}
+    dev: true
+
+  /consola/3.0.0:
+    resolution: {integrity: sha512-ed10+SGP/dL3u7fEDxDPb+68vS4JckVjivIMq2wg5to8od2Rki5AyetFivjuC3cE49+azquEVDSgHZ8qYrUxdQ==}
     dev: true
 
   /conventional-changelog-angular/5.0.13:
