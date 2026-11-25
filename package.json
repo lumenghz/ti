@@ -46,7 +46,7 @@
     "prompts": "^2.4.2",
     "standard-version": "^9.5.0",
     "typescript": "^5.5.4",
-    "unbuild": "^2.0.0",
+    "unbuild": "^3.0.0",
     "vitest": "^2.0.5",
     "yaml": "^2.5.0",
     "yargs": "^17.7.2"
